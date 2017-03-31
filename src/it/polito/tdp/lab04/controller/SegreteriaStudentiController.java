@@ -43,10 +43,13 @@ public class SegreteriaStudentiController {
     @FXML
     private TextArea txtResult;
 
+    /*
+     * Metodo associato al bottone "Cerca corsi"
+     */
     @FXML
     void doCercaCorsi(ActionEvent event) {
     	txtResult.appendText("\n");
-    	if(!controlloCorso()){
+    	if(controlloCorso()){
     		//Integrare controllo che la matricola inserita sia un numero
     		int matricola = Integer.parseInt(txtMatricola.getText());
     		if(model.cercaStudente(matricola)==null){
@@ -74,6 +77,9 @@ public class SegreteriaStudentiController {
     	
     }
 
+    /*
+     * Metodo associato al bottone "Cerca iscritto corso"
+     */
     @FXML
     void doCercaIscrittiCorso(ActionEvent event) {
     	if(!controlloCorso()){
@@ -87,6 +93,9 @@ public class SegreteriaStudentiController {
 
     }
 
+    /*
+     * Metodo associato al bottone "V"
+     */
     @FXML
     void doCercaNome(ActionEvent event) {
     	//Inserire controllo che l'utente abbia inserito effettivamente una matricola INT
@@ -101,6 +110,9 @@ public class SegreteriaStudentiController {
     	}
     }
 
+    /*
+     * Metodo associato al bottone "Iscrivi"
+     */
     @FXML
     void doIscrivi(ActionEvent event) {
     	txtResult.appendText("\n");
@@ -109,6 +121,9 @@ public class SegreteriaStudentiController {
     	else txtResult.appendText("Iscrizione dello studente al corso selezionato fallita!");
     }
 
+    /*
+     * Metodo associato al bottone "Reset"
+     */
     @FXML
     void doReset(ActionEvent event) {
     	boxCorsi.setPromptText("");
@@ -119,6 +134,10 @@ public class SegreteriaStudentiController {
 
     }
     
+    /**
+     * Controlla che sia stato selezionato un corso all'interno della ComboBox
+     * @return true se è stato selezionato un corso, false in caso contrario
+     */
     private boolean controlloCorso(){
     	if(boxCorsi.getValue().getCod()==null)
     		return false;

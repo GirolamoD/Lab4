@@ -10,8 +10,9 @@ import it.polito.tdp.lab04.model.Studente;
 
 public class CorsoDAO {
 
-	/*
-	 * Ottengo tutti i corsi salvati nel Db
+	/**
+	 * Permette di ottenere tutti i corsi presenti nel Database
+	 * @return Lista contenente i corsi
 	 */
 	public List<Corso> getTuttiICorsi() {
 
@@ -49,8 +50,10 @@ public class CorsoDAO {
 		}
 	}
 
-	/*
-	 * Dato un codice insegnamento, ottengo il corso
+	/** Dato un oggetto Corso contenente esclusivamente il codice del corso,
+	 * ottengo un oggetto Corso completamente implementato
+	 * @param corso l'oggetto corso da implementare
+	 * @return l'oggetto corso implementato
 	 */
 	public Corso getCorso(Corso corso) {
 		final String sql = "SELECT codins,crediti,nome,pd FROM corso WHERE codins=?" ;
@@ -81,8 +84,11 @@ public class CorsoDAO {
 		
 	}
 
-	/*
-	 * Ottengo tutti gli studenti iscritti al Corso
+	
+	/**
+	 * Dato un corso, permette di ottenere tutti gli studenti iscritti a quel corso
+	 * @param corso Oggetto di classe Corso del quale voglio conoscere gli studenti iscritti
+	 * @return La lista degli studenti iscritti al corso passato come parametro
 	 */
 	public List<Studente> getStudentiIscrittiAlCorso(Corso corso) {
 		
@@ -116,9 +122,11 @@ public class CorsoDAO {
 		
 	}
 
-	/*
+	/**
 	 * Data una matricola ed il codice insegnamento,
 	 * iscrivi lo studente al corso.
+	 * @param studente Oggetto di classe Studente contenente una matricola
+	 * @param corso Oggetto di classe Corso contentente un codice corso
 	 */
 	public boolean inscriviStudenteACorso(Studente studente, Corso corso) {
 		final String sql = "INSERT INTO `iscritticorsi`.`iscrizione` (`matricola`, `codins`) VALUES (?, ?)";

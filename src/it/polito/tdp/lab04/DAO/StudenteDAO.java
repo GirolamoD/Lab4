@@ -12,7 +12,10 @@ import it.polito.tdp.lab04.model.Studente;
 
 public class StudenteDAO {
 	
-	
+	/**
+	 * Questo metodo permette di ottenere tutti gli studenti contenuti nel DB
+	 * @return Lista di Studenti
+	 */
 	public List<Studente> getTuttiGliStudenti() {
 
 		final String sql = "SELECT * FROM studente";
@@ -48,6 +51,12 @@ public class StudenteDAO {
 		}
 	}
 	
+	/**
+	 * Dato un oggetto di classe Studente contenente la matricola,
+	 * restituisce l'oggetto implementato
+	 * @param s Oggetto di classe Studente contenente la matricola
+	 * @return L'oggetto di classe Studente implementato
+	 */
 	public Studente getStudente(Studente s) {
 		final String sql = "SELECT matricola,cognome,nome,CDS "+
 							"FROM studente "+
@@ -74,6 +83,12 @@ public class StudenteDAO {
 		return null;
 	}
 	
+	/**
+	 * Data la matricola di uno studente,permette di conoscere i corsi 
+	 * al quale lo studente è iscritto
+	 * @param m La matricola dello studente di cui voglio conoscere i corsi al quale è iscritto
+	 * @return La lista dei corsi al quale lo studente è iscritto
+	 */
 	public List<Corso> getCorsiDiUnoStudente(int m) {
 		
 		List<Corso> corsi = new LinkedList<Corso>();
@@ -107,6 +122,14 @@ public class StudenteDAO {
 		
 	}
 	
+	/**
+	 * Dati matricola di uno studente e un corso, mi permette di sapere
+	 * se lo studente è iscritto a quel corso
+	 * @param m La matricola dello studente
+	 * @param c Oggetto di classe corso
+	 * @return true se lo studente è iscritto al corso,
+	 * false in caso contrario
+	 */
 	public boolean isIscritto(int m,Corso c) {
 		
 		final String sql = "SELECT COUNT(*) AS NUM "+
